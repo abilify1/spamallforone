@@ -348,7 +348,7 @@ try:
 {kan}Bantu terus admin mengembangkan tools ini, dengan cara tidak merecode sc ini 'v'""")
   os.system("python brutal.py")
   time.sleep(4)
- elif (hyu == '3' or (hyu == '03'):
+ elif (hyu == '3') or (hyu == '03'):
   os.system("git pull; python brutal.py")
  else:
   print (f"{kun}[{kan}•{kun}] {kun}Masukkan pilihan dengan benar")
