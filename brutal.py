@@ -334,7 +334,7 @@ try:
   nom=str(input(f"{kun}[{kan}•{kun}] {im}Masukkan nomor target (ex:88xx) : "))
   if len(nom) <= 5: print (f"{kun}[{kan}•{kun}] {kun}Mohon, masukkan no telp dengan benar");sys.exit()
   print (f"{kun}[{kan}•{kun}] {im}Target : {kon}{nom}")
-  main.start(hyu)
+  main.start()
  elif (hyu == '2') or (hyu == '02'):
   os.system("xdg-open https://chat.whatsapp.com/LqEGHqFtQBwLEUbemADmTk")
   os.system("python brutal.py")
