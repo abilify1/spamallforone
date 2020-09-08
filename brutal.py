@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup as bs
 import requests as ru
 from fake_useragent import UserAgent
 from warn.warn import *
-import time 
 from etc.bener import *
 from etc.ua import *
 from etc.loding import *
@@ -44,6 +43,12 @@ class main:
       spam.kelaspintar(nom)
       loding()
       spam.payfazz(nom)
+      loding()
+      spam.alodokter(nom)
+      loding()
+      spam.prosehat(nom)
+      loding()
+      print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
 class spam:
@@ -321,10 +326,44 @@ class spam:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}PayFazz{kan} OK")
      else:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}PayFazz{kun} Gagal")
+ def alodokter(nom):
+     r = ru.Session()
+     r.headers.update({'referer':'https://www.alodokter.com/login-alodokter'})
+     hy = r.get("https://www.alodokter.com/login-alodokter")
+     tol = bs(hy.text,'html.parser')
+     token=tol.find('meta',{'name':'csrf-token'})['content']
+     hd = {
+     'user-agent':ua.random,
+     'content-type':'application/json',
+     'referer':'https://www.alodokter.com/login-alodokter',
+     'accept':'application/json',
+     'origin':'https://www.alodokter.com',
+     'x-csrf-token':token
+      }
+     y = r.post("https://www.alodokter.com/login-with-phone-number",headers=hd,json={"user":{"phone":"0"+nom}})
+     if y.json()['status'] == 'success':
+       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Alodokter{kan} OK")
+     else:
+       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Alodokter{kun} Gagal")
+ def prosehat(nom):
+     head={
+                        'accept': 'application/json, text/javascript, */*; q=0.01',                                                                                  
+                        'origin': 'https://www.prosehat.com',                                                                                                        
+                        'x-requested-with': 'XMLHttpRequest',
+                        'user-agent': ua.random,
+                        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'referer': 'https://www.prosehat.com/akun',
+                }
+     dat={'phone_or_email':'0'+nom,'action':'ajaxverificationsend'}
+     ng=ru.post('https://www.prosehat.com/wp-admin/admin-ajax.php',data=dat,headers=head)
+     if "token" in ng.text:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Prosehat{kan} OK")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Prosehat{kun} Gagal")
 try:
  os.system("clear")
  bnr()
- menu=["Mulai","Grup WhatsApp","Update","Info Tools"]
+ menu=["Mulai","Grup WhatsApp","Info Tools"]
  print (f"         {tot}MENU{sop}        ")
  for i in range(len(menu)):
   print (f"{ken} [0"+str(i+1).ljust(1)+"] \033[31m"+menu[i])
@@ -339,7 +378,7 @@ try:
  elif (hyu == '2') or (hyu == '02'):
   os.system("xdg-open https://chat.whatsapp.com/LqEGHqFtQBwLEUbemADmTk")
   os.system("python brutal.py")
- elif (hyu == '4') or (hyu == '04'):
+ elif (hyu == '3') or (hyu == '03'):
   os.system("clear")
   bnr()
   print (f"          {tot}TENTANG TOOL INI{sop}   ")
@@ -347,9 +386,6 @@ try:
 {kan}Tools spam all for one adalah {kon}spam brutal (sms, wa, call) yang dibuat untuk menjahili teman2 kalian
 {kan}Bantu terus admin mengembangkan tools ini, dengan cara tidak merecode sc ini 'v'""")
   os.system("python brutal.py")
-  time.sleep(4)
- elif (hyu == '3') or (hyu == '03'):
-  os.system("git pull; python brutal.py")
  else:
   print (f"{kun}[{kan}•{kun}] {kun}Masukkan pilihan dengan benar")
   os.system("python brutal.py")
