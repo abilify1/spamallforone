@@ -378,7 +378,7 @@ class spam:
 try:
  os.system("clear")
  bnr()
- menu=["Mulai","Grup WhatsApp","Info Tools"]
+ menu=["Mulai","Grup WhatsApp","Info Tools","Update"]
  print (f"         {tot}MENU{sop}        ")
  for i in range(len(menu)):
   print (f"{ken} [0"+str(i+1).ljust(1)+"] \033[31m"+menu[i])
@@ -401,6 +401,8 @@ try:
 {kan}Tools spam all for one adalah {kon}spam brutal (sms, wa, call) yang dibuat untuk menjahili teman2 kalian
 {kan}Bantu terus admin mengembangkan tools ini, dengan cara tidak merecode sc ini 'v'""")
   os.system("python brutal.py")
+ elif (hyu == '4') or (hyu == '04'):
+   os.system("git pull; python brutal.py")
  else:
   print (f"{kun}[{kan}•{kun}] {kun}Masukkan pilihan dengan benar")
   os.system("python brutal.py")
