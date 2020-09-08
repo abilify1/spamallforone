@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 import requests as ru
 from fake_useragent import UserAgent
 from warn.warn import *
+import time 
 from etc.bener import *
 from etc.ua import *
 from etc.loding import *
@@ -323,7 +324,7 @@ class spam:
 try:
  os.system("clear")
  bnr()
- menu=["Mulai","Grup WhatsApp","Info Tools"]
+ menu=["Mulai","Grup WhatsApp","Update","Info Tools"]
  print (f"         {tot}MENU{sop}        ")
  for i in range(len(menu)):
   print (f"{ken} [0"+str(i+1).ljust(1)+"] \033[31m"+menu[i])
@@ -338,7 +339,7 @@ try:
  elif (hyu == '2') or (hyu == '02'):
   os.system("xdg-open https://chat.whatsapp.com/LqEGHqFtQBwLEUbemADmTk")
   os.system("python brutal.py")
- elif (hyu == '3') or (hyu == '03'):
+ elif (hyu == '4') or (hyu == '04'):
   os.system("clear")
   bnr()
   print (f"          {tot}TENTANG TOOL INI{sop}   ")
@@ -346,6 +347,9 @@ try:
 {kan}Tools spam all for one adalah {kon}spam brutal (sms, wa, call) yang dibuat untuk menjahili teman2 kalian
 {kan}Bantu terus admin mengembangkan tools ini, dengan cara tidak merecode sc ini 'v'""")
   os.system("python brutal.py")
+  time.sleep(4)
+ elif (hyu == '3' or (hyu == '03'):
+  os.system("git pull; python brutal.py")
  else:
   print (f"{kun}[{kan}•{kun}] {kun}Masukkan pilihan dengan benar")
   os.system("python brutal.py")
