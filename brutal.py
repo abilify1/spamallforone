@@ -56,6 +56,8 @@ class main:
       loding()
       spam.olx(nom)
       loding()
+      spam.rupiahcepat(nom)
+      loding()
       print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
@@ -418,6 +420,27 @@ class spam:
        print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}OLX{kan} OK")
      else:
        print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}OLX{kun} Gagal")
+ def rupiahcepat(nom):
+     hd = {
+     "accept": "text/html, application/xhtml+xml, application/json, */*",
+     "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+     "content-length": "166",
+     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+     "origin": "https://h5.rupiahcepatweb.com",
+     "referer": "https://h5.rupiahcepatweb.com/dua2/pages/openPacket/openPacket.html?activityId=11&invite=200219190100215723",
+     "sec-fetch-dest": "empty",
+     "sec-fetch-mode": "cors",
+     "sec-fetch-site": "same-site",
+     "user-agent": ua.random
+     }
+     url = 'https://apiservice.rupiahcepatweb.com/webapi/v1/request_login_register_auth_code'
+     dit = {"mobile":"0"+nom,"noise":"1583590641573155574","request_time":"158359064157312","access_token":"11111"}
+     dat = json.dumps(dit)
+     r = ru.Session()
+     a = r.post(url,headers=hd,data={"data":dat}).text
+     b = json.loads(a)["code"]
+     if b == 0:print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}RupiahCepat{kan} OK")
+     else:print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}RupiahCepat{kun} Gagal")
 try:
  os.system("clear")
  bnr()
