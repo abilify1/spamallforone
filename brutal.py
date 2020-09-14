@@ -212,7 +212,7 @@ class spam:
     a = r.get(url,headers={'user-agent':ua.random}).cookies
     b = r.post(spam,headers=hd,cookies={'_cwpeople_keyle_key':a["_cwpeople_key"]},data=jsn).text
     c = json.loads(b)["type"]
-    if c == 'ok' in b.text:print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({im}{kun}SMS{kan}) {ken}Coowry{kan} OK")
+    if 'ok' in b.text:print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({im}{kun}SMS{kan}) {ken}Coowry{kan} OK")
     else:print (f"{ken}[{kun}•{ken}] {ken}Spam {kan}({im}{kun}SMS{kan}) {ken}Coowry{kun} Gagal")
  def iuga(nom):
     pis = nom.replace("+62","")
